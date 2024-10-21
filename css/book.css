@@ -7,18 +7,10 @@
     --textDark: #333;
     --yellowPrimary: #E4C087;
     --yellowSecondary: #E8B86D;
-    /* --yellowTertiary: #e2e2e2; */
 
     /* bg */
     --bgDark: #333;
     --bgLight: #f5f5f5;
-    /* --bgTertiary: #e2e2e2; */
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
 body {
@@ -31,7 +23,38 @@ body {
     margin: 0 auto;
 }
 
-/* Container for the book details */
+/* ---------Header Styles------------- */
+.store-header {
+    display: flex;
+    position: relative;
+    container-type: inline-size;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bgDark);
+    color: var(--bgLight);
+    padding-top: clamp(1rem, 0.8372rem + 0.7442vw, 2rem);
+    padding-bottom: clamp(1rem, 0.8372rem + 0.7442vw, 2rem);
+    padding-left: clamp(1rem, 0.5116rem + 2.2326vw, 4rem);
+    padding-right: clamp(1rem, 0.5116rem + 2.2326vw, 4rem);
+}
+
+.store-name {
+    color: var(--yellowSecondary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: clamp(1.25rem, 1.0465rem + 0.9302vw, 2.5rem);
+    font-weight: 500;
+    margin: 0;
+    transition: .3s ease;
+
+    &:hover {
+        color: var(--yellowPrimary);
+    }
+}
+
+/* ----------Container for the book details--------------- */
 .book-details-container {
     container-type: inline-size;
     background-color: white;
@@ -47,63 +70,13 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 .book-details {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 
     .image-container {
         width: 75%;
-    }
-
-    .btn-group {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1rem;
-        align-items: center;
-
-        .cart-btn {
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-            gap: .5rem;
-            background-color: var(--yellowSecondary);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 1rem;
-            color: var(--textLight);
-            cursor: pointer;
-
-            &:hover {
-                background-color: var(--yellowPrimary);
-            }
-
-            &:active {
-                background-color: var(--yellowSecondary);
-            }
-        }
-
-        .wishlist-btn {
-            display: flex;
-            align-items: center;
-            background-color: transparent;
-            border: 1px solid var(--yellowSecondary);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 1rem;
-            color: gray;
-            cursor: pointer;
-
-            &:hover {
-                background-color: var(--yellowPrimary);
-            }
-
-            &:active {
-                background-color: var(--yellowSecondary);
-            }
-        }
-
-
     }
 }
 

@@ -17,28 +17,25 @@
       </a>
       <button class="wishlist-btn" id="wishlistBtn">
         <i class="fa-solid fa-heart wishlist-icon"></i>
-        <span class="wishlist-badge">0</span>
+        <span id="badge" class="wishlist-badge"></span>
       </button>
       <div class="wishlist-dropdown" id="wishlistDropdown">
         <h4>My Wishlist Books</h4>
         <ul class="wishlist-items" id="wishlistItems"></ul>
       </div>
     </header>
-
     <!-- header-end -->
 
     <!-- flter section start-->
     <section class="filter-search-section">
       <div class="select-container">
         <div class="select-wrapper">
-          <label for="generSelect">Filter By Genre/Topic:</label>
+          <label for="genreSelect">Filter By Genre/Topic:</label>
           <select id="genreSelect" class="custom-select">
-            <option value="" disabled selected>Select Genre</option>
-            <option value="fiction">Fiction</option>
-            <option value="non-fiction">Non-Fiction</option>
+            <option value="" disabled selected>Select topic</option>
+            <option value="">All Topc</option>
+            <option value="children">Children</option>
             <option value="romance">Romance</option>
-            <option value="sci-fi">Science Fiction</option>
-            <option value="mystery">Mystery</option>
           </select>
           <i class="fa-solid fa-chevron-down select-icon"></i>
         </div>
