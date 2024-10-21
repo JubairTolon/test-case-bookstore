@@ -65,6 +65,7 @@ body {
     background-color: transparent;
     border: 2px dashed gray;
     transition: .3s ease;
+    color: var(--bgLight);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -150,6 +151,9 @@ body {
 .filter-search-section {
     container-type: inline-size;
     display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 10;
     justify-content: space-between;
     background-color: #e8e8e8;
     border-bottom: 1px solid lightgray;
@@ -300,20 +304,12 @@ body {
     }
 }
 
-.book-card {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    text-decoration: none;
-    transition: transform 0.3s;
-
-    /* Apply the blink animation */
-    animation: blink 0.5s linear infinite;
-    /* Adjust duration as needed */
+.no-results {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(1.25rem, 1.0465rem + 0.9302vw, 2.5rem);
 }
 
 .book-card {
@@ -415,30 +411,6 @@ body {
 .book-id {
     font-size: 0.9rem;
     color: #555;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 300px;
-    margin: 2rem auto;
-}
-
-input,
-button {
-    padding: 10px;
-    font-size: 1rem;
-}
-
-button {
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #555;
 }
 
 /* -------------Footer Styles-------------- */

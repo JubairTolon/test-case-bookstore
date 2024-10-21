@@ -49,10 +49,17 @@ const bookList = document.getElementById('book-list');
 bookList.innerHTML = `<p class="loading-message"><i class="fa-solid fa-book-open-reader"></i>Bookstore</p>`;
 
 function renderBooks(books) {
+    bookList.innerHTML = '';
+
+    if (books.length === 0) {
+        bookList.innerHTML = `<p class="no-results">No books available.</p>`;
+        return;
+    }
+
     books.forEach((book) => {
         const author = book.authors[0]?.name || 'Unknown Author';
         const genre = book.bookshelves.length > 0 ? book.bookshelves[0] : 'Unknown Genre';
-        const coverImage = book.formats['image/jpeg'] || 'default-image.jpg';
+        const coverImage = book.formats['image/jpeg'] || '/assets/book-image.png';
         const bookId = book.id;
         const bookLink = document.createElement('a');
         bookLink.classList.add('book-card');
@@ -61,23 +68,23 @@ function renderBooks(books) {
         bookLink.href = bookUrl;
 
         bookLink.innerHTML = `
-                <div class="card-image">
-                    <img src="${coverImage}" alt="${book.title} cover image">
+            <div class="card-image">
+                <img src="${coverImage}" alt="${book.title} cover image">
+            </div>
+            <div class="card-content">
+                <h3 class="book-title">${book.title}</h3>
+                <em class="book-author">by ${author}</em>
+                <p class="book-genre"><strong>Genre:</strong> ${genre}</p>
+                <p class="book-id"><strong>Book ID:</strong> ${bookId}</p>
+                <div class="btn-group">
+                    <button id="wishlist-btn-${bookId}" class="wishlist-btn" onclick="addToWishlist(event, ${bookId})">
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
+                    <button class="cart-btn" onclick="addToWishlist(${bookId})">Add to <i class="fa-solid fa-cart-shopping"></i></button>
                 </div>
-                <div class="card-content">
-                    <h3 class="book-title">${book.title}</h3>
-                    <em class="book-author">by ${author}</em>
-                    <p class="book-genre"><strong>Genre:</strong> ${genre}</p>
-                    <p class="book-id"><strong>Book ID:</strong> ${bookId}</p>
-                    <div class="btn-group">
-                       <button id="wishlist-btn-${bookId}" class="wishlist-btn" onclick="addToWishlist(event, ${bookId})">
-                       <i class="fa-solid fa-heart"></i>
-                       </button>
-    
-                        <button class="cart-btn" onclick="addToWishlist(${bookId})">Add to <i class="fa-solid fa-cart-shopping"></i></button>
-                    </div>
-                </div>
-            `;
+            </div>
+        `;
+
         bookList.appendChild(bookLink);
     });
 }
@@ -178,6 +185,10 @@ genreSelect.addEventListener('change', handleGenreSelect);
 
 function handleGenreSelect(event) {
     const selectedGenre = event.target.value;
+
+    bookList.innerHTML = '';
+    bookList.innerHTML = `<p class="loading-message"><i class="fa-solid fa-book-open-reader"></i>Bookstore</p>`;
+
     fetch(`https://gutendex.com/books?topic=${selectedGenre}`)
         .then(response => response.json())
         .then(data => {
@@ -199,7 +210,9 @@ function debounce(func, delay) {
 
 function handleSearchInput(event) {
     const searchTerm = event.target.value;
-    if (searchTerm.trim() === '') return;
+
+    bookList.innerHTML = '';
+    bookList.innerHTML = `<p class="loading-message"><i class="fa-solid fa-book-open-reader"></i>Bookstore</p>`;
 
     fetch(`https://gutendex.com/books?search=${encodeURIComponent(searchTerm)}`)
         .then(response => response.json())

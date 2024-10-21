@@ -3,7 +3,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const bookId = urlParams.get('id');
 
 // Show loading message
-bookDetailsDiv.innerHTML = `<p class="loading-message">Loading book details...</p>`;
+bookDetailsDiv.innerHTML = `<p class="loading-message"><i class="fa-solid fa-book-open-reader"></i>Bookstore</p>`;
 
 if (bookId) {
     fetchBookDetails(bookId);
