@@ -1,3 +1,3 @@
 ## Live Links
 
-- [Bookstore]([https://github.com](https://test-case-bookstore.netlify.app/)
+- [Bookstore](https://test-case-bookstore.netlify.app/)
